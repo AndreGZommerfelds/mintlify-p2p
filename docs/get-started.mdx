@@ -1,0 +1,81 @@
+---
+title: "Get Started"
+---
+
+Start integrating P2P.org's staking capabilities into your platform in minutes. This guide will help you set up your environment and make your first API call.
+
+## Quick Setup
+
+1. **Get API Access**
+
+   To get started with our APIs, you'll need to obtain authentication credentials. Visit our [Authentication Guide](/docs/authentication) for detailed instructions.
+
+2. **Choose Your Environment**
+
+   Production API endpoint:
+
+   ```
+   https://api.p2p.org
+   ```
+
+   Test environment endpoint:
+
+   ```
+   https://api-test.p2p.org
+   ```
+
+3. **Make Your First API Call**
+
+   Try creating your first stake transaction using the Unified API (no funds required):
+
+   ```sh Bash
+   curl --request POST \
+        --url https://api-test.p2p.org/api/v1/unified/staking/stake \
+        --header 'accept: application/json' \
+        --header 'authorization: Bearer 8aAEXXJsogPZzpAKk1uedM7TYxPvGrBi' \
+        --header 'content-type: application/json' \
+        --data '
+   {
+     "chain": "polkadot",
+     "network": "westend",
+     "stakerAddress": "5FU44bZkd8iza8Sw8xS9QeRamsj9MpcBiwvLBReVDLBmd25q",
+     "amount": 1
+   }
+   '
+   ```
+
+   This will return an unsigned transaction that you can review without committing any funds.
+
+## Integration Steps
+
+### 1. Authentication Setup
+
+* Follow our [Authentication Guide](/docs/authentication) to get your API token
+* Use JWT authentication for all API calls
+* Include token in Authorization header
+
+### 2. Choose Your Product
+
+* [**Unified API**](/docs/unified-api-overview): Start here for multi-chain integration
+* [**Staking API**](/docs/staking-overview): Direct staking operations
+* [**Restaking API**](/docs/restaking-overview): Enhanced yield opportunities
+* [**DVT Staking API**](/docs/overview-dvt-solutions): Distributed validation
+* [**Data API**](/docs/overview): Analytics and monitoring
+
+### 3. Test Your Integration
+
+* Use test networks for initial development
+* Validate responses and error handling
+* Monitor rate limits and usage
+
+### 4. Go Live
+
+* Switch to production endpoints
+* Configure network-specific parameters
+* Set up monitoring and alerts
+
+## Code Examples
+
+Looking for implementation examples? Check out our [Code Recipes](/recipes) for ready-to-use code samples and common integration patterns.
+
+Need help? Our [team](/docs/contacts) is available to assist with your integration.

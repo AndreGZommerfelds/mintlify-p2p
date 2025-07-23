@@ -1,0 +1,46 @@
+---
+title: "Integration Planning Guide"
+description: Plan your integration with P2P.ORG
+---
+
+Before starting your integration with P2P.org's APIs, it's important to understand the different approaches available and their implications. This guide will help you choose the right integration path and plan your development effectively.
+
+## Integration Approach
+
+|                            | Unified API (recommended)        | Staking API                               |
+| -------------------------- | -------------------------------- | ----------------------------------------- |
+| Estimated Integration Time | \<1 week for 10+ networks        | \<1 week for a single network             |
+| Network Support            | Single endpoint for all networks | Network-specific endpoints                |
+| Customization              | Standard options                 | More control over the staking flow        |
+| Development Complexity     | Low - standardized requests      | Medium - network-specific implementations |
+| Best For                   | Quick multi-chain integration    | Single blockchain implementation          |
+
+## Integration Timeline
+
+### Phase 1: Planning (estimation: \<1 week)
+
+* Choose between [Unified API](/docs/unified-api-overview) or [Staking API](/docs/staking-overview), or other APIs (Restaking API, DVT API)
+* Define required networks and features (see [Networks Supported](/docs/networks-supported))
+* Check existing code [Recipes](/recipes)
+
+### Phase 2: Development
+
+#### Option 1: Unified API (estimation: \<1 week for 10+ networks)
+
+* Implement [authentication](/docs/authentication)
+* Integrate single endpoint for all networks
+* Test with multiple networks
+
+#### Option 2: Staking API (estimation: \<1 week for a single network)
+
+* Implement [authentication](/docs/authentication)
+* Set up network-specific integrations
+* Implement advanced features for each network individually
+
+### Phase 3: Testing & Production Launch (estimation: \~1 week)
+
+* Production credentials setup
+* End-to-end testing
+* Monitoring implementation
+
+Need help planning your integration? Contact our [team](/docs/contacts) for guidance.

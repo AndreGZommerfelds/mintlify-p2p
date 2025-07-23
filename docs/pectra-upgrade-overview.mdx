@@ -1,0 +1,75 @@
+---
+title: "Overview"
+---
+
+The Ethereum Pectra upgrade brings many **benefits for clients** using ETH or SSV validators.
+
+* Enhanced efficiency & security with validators that can hold more than 32 ETH (up to 2048 ETH). Validators can now be consolidated into one.
+* Autocompounded rewards
+* You can top up your validators, or withdraw a partial amount
+
+P2P.ORG has introduced a series of improvements to its staking APIs, enabling clients to take full advantage of the new validator capabilities. These changes include support for validator consolidation, incremental staking (top-ups), partial withdrawals, and streamlined validator setup — both for Ethereum and SSV-based validators.
+
+All changes are backward compatible with the current `0x01` validator flow and allow seamless migration to `0x02` withdrawal credentials for enhanced functionality.
+
+## What's New
+
+| Feature                       | Description                                                         | API Availability    |
+| ----------------------------- | ------------------------------------------------------------------- | ------------------- |
+| Validator Consolidation       | Merge multiple validators into one with a single withdrawal address | Ethereum & SSV APIs |
+| Partial Withdrawals           | Withdraw ETH in excess of 32 ETH without exiting the validator      | Ethereum & SSV APIs |
+| Top-ups (Incremental Staking) | Increase stake on an existing validator up to 2048 ETH              | Ethereum & SSV APIs |
+| Simplified Setup              | Create 0x02 validators with a single transaction (via 3.1 contract) | Ethereum & SSV APIs |
+| Backward Compatibility        | All existing 0x01 flows remain unchanged and supported              | Yes                 |
+
+## Backward Compatibility
+
+The Pectra upgrade introduces new capabilities while maintaining compatibility with all existing validator flows:
+
+* Clients currently using the **0x01 validator setup** can continue without changes.
+* All existing methods remain supported.
+* New functionality (e.g. validator consolidation, partial withdrawals, top-ups)\
+  is exposed via **new API methods** or **optional parameters** in existing methods.
+
+This ensures a seamless upgrade path without breaking changes.
+
+## SSV Validator Support under Pectra
+
+P2P.ORG has extended its SSV staking API to fully support the capabilities introduced with the Ethereum Pectra upgrade. This ensures that clients using the SSV Network can benefit from the same validator enhancements as native Ethereum staking users.
+
+**Key Updates:**
+
+* **Unified flow:**\
+  Most operations (validator consolidation, top-ups, partial withdrawals) use the same API methods for both Ethereum and SSV validators.
+
+* **Validator setup enhancements:**\
+  The only divergence lies in the validator setup process:
+
+  * We've **updated our existing SSV validator creation method** to support **0x02 withdrawal credentials.**
+  * This enhancement is **fully backward compatible** — clients can still create 0x01 validators as before.
+  * Support for simplified setup via the **3.1 Smart Contract** is also available.
+
+All SSV staking methods now align with the Ethereum staking API to offer consistent workflows, regardless of your validator backend.
+
+## Next Steps
+
+To get started with the new Pectra-enabled features, we recommend the following workflow:
+
+1. **Review the API overview table** below to understand which methods support new features.
+2. **Select the relevant flows** based on your validator type (Ethereum or SSV) and your use case (consolidation, top-up, partial withdrawal, etc.).
+3. **Test in the Hoodi testnet** environment (available from May 5).
+4. **Refer to the examples section** for complete cURL samples and expected responses.
+5. **Reach out to our team** if you need help integrating or have specific questions:\
+   📧 [andre.zommerfelds@p2p.org](mailto:andre.zommerfelds@p2p.org)
+
+### Overview of Pectra API Enhancements
+
+| Use Case                        | API Type                | SSV Support              | Compatibility                  |
+| ------------------------------- | ----------------------- | ------------------------ | ------------------------------ |
+| Validator Consolidation         | New                     | Same method              | Compatible                     |
+| Set up New Validator            | Updated                 | Updated for 0x02 support | Fully compatible               |
+| Simplified Setup (3.1 Contract) | New                     | Available via SSV method | Compatible                     |
+| Upgrade 0x01 to 0x02            | New (via Consolidation) | Supported                | Compatible                     |
+| Top-up / Incremental Staking    | New                     | Same method              | Compatible                     |
+| Partial Withdrawal              | New                     | Same method              | Requires 0x02 withdrawal creds |
+| Full Withdrawal                 | Unchanged               | Unchanged                | Compatible                     |

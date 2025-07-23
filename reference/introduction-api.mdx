@@ -1,0 +1,28 @@
+---
+title: "Introduction"
+---
+
+Staking API provides seamless integration for initiating staking requests and accessing staking data. By integrating your systems with our validators' infrastructure, you can eliminate the need for dedicated web page forms, making it easier to offer staking services to your customers.
+
+## API Limitations
+
+To ensure optimal usage of Staking API, please be aware of the following limitations:
+
+* **Request Rate Limit**: The API enforces a maximum of 60 requests per minute. Ensure that your application adheres to this limit to avoid disruptions in service.
+
+* **Response Times**: While the P2P infrastructure aims for an average response time of 200 milliseconds (ms), please note that response times may vary depending on the specific nature of the request. P2P guarantees a 95th percentile response time of 10 seconds and a 99th percentile response time of 60 seconds to provide transparency.
+
+* **Node Request Limit**: The API supports the ability to request a maximum of 3125 validators in a single API call. This is to prevent the risk of users mistakenly requesting an excessive number of validators. If more validators are needed, you can send additional requests, each supporting up to 3125 validators.
+
+* **Validator Keys Limit**: The node request creation is subject to a limit based on the available validator keys in our clusters. Ensure that our team knows the amount and frequency of your validator key requests to prevent service disruptions.
+
+* **Withdrawal and Validator Status Endpoint Limits**: For specific endpoints like Withdrawal and Validator Status, the rate limit is 10 requests per minute, with 10,000 requests per day and a total of 30,000 requests per month.
+
+By keeping these limitations in mind, you can optimize your usage of Staking API and ensure a smooth and reliable integration process.
+
+If you have any questions or need further assistance, please [contact](/docs/contacts) us. We are committed to helping you make the most of Staking API and providing a seamless staking experience for your customers.
+
+## What's Next?
+
+* Learn more about [Authentication](/docs/authentication).
+* Explore the [guides](/docs/staking-overview) to learn how to use the API effectively.

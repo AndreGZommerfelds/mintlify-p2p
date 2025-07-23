@@ -1,0 +1,67 @@
+---
+title: "Validator Consolidation"
+---
+
+The Pectra upgrade introduces major improvements to how validators are created and managed across both Ethereum and SSV staking APIs. These enhancements improve scalability, enable larger validator sizes (up to 2048 ETH), and streamline flows using `0x02` withdrawal credentials.
+
+## Objective
+
+Streamline validator management by merging multiple existing validators into a single `0x02`-enabled validator. This enables autocompounding and simplifies future staking operations.
+
+## Applicable Scenarios
+
+* Reducing the number of active validators tied to the same withdrawal address
+* Migrating from `0x01` to `0x02` withdrawal credentials
+* Preparing for advanced staking operations such as top-ups and partial withdrawals
+
+## API Endpoint
+
+`POST` [/api/v1/eth/staking/direct/tx/consolidation-validators](/reference/eth-staking-consolidation-validators).
+
+## Flow
+
+1. Submit a list of `sourcePubkeys` and a `targetPubkey` — all validators must share the same withdrawal address.
+2. The API returns a serialized transaction payload.
+3. Sign the transaction using the withdrawal address.
+4. Broadcast the transaction to complete the consolidation. The resulting validator will use `0x02` withdrawal credentials.
+
+> This method is supported for both Ethereum and SSV validators via the same endpoint.
+
+Example request:
+
+```sh cURL
+curl --request POST \
+  --url https://api.p2p.org/api/v1/eth/staking/direct/tx/consolidation-validators \
+  --header 'Content-Type: application/json' \
+  --header 'Accept: application/json' \
+  --header 'Authorization: Bearer <token>' \
+  --data '{
+    "withdrawalAddress": "0x0FCb73Fbf9d4...E21c1EcE5aE1Ccb63",
+    "sourcePubkeys": [
+      "0xad9049587a26e8db61f...9f334caaf5e9"
+    ],
+    "targetPubkey": "0xad9049587a26e8...aaf5e9"
+  }'
+```
+
+Example response
+
+```json JSON
+{
+  "error": null,
+  "result": {
+    "list": [
+      {
+        "serializeTx": "0x02f87883088bb080840422bd...334caaf5e9c0",
+        "gasLimit": "1000000",
+        "data": "0xad9049587a26e8db61f6...1549f334caaf5e9",
+        "value": "1",
+        "chainId": 560048,
+        "type": 2,
+        "maxFeePerGas": "2211533588",
+        "maxPriorityFeePerGas": "69385672"
+      }
+    ]
+  }
+}
+```
